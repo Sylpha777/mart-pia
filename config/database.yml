@@ -48,7 +48,9 @@ test:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
 production:
-  <<: *default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
   database: mart-pia_production
   username: mart-pia
   password: <%= ENV['MART-PIA_DATABASE_PASSWORD'] %>
