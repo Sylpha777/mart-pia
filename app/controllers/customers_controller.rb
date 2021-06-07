@@ -1,5 +1,7 @@
 class CustomersController < ApplicationController
   
+  before_action :require_customer_logged_in, only: [:show, :edit, :update]
+  
   def show
   end
 

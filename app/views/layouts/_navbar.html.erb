@@ -9,11 +9,23 @@
         <li class="nav-item dropdown">
           <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Menu</a>
           <ul class="dropdown-menu dropdown-menu-right">
-            <li class="dropdown-item">店舗一覧</li>
-            <li class="dropdown-divider"></li>
-            <li class="dropdown-item"><%= link_to '新規登録', new_customer_path %></li>
-            <li class="dropdown-divider"></li>
-            <li class="dropdown-item">ログイン</li>
+            <% if customer_logged_in? %>
+              <li class="dropdown-item">店舗一覧</li>
+              <li class="dropdown-divider"></li>
+              <li class="dropdown-item">カート内容</li>
+              <li class="dropdown-divider"></li>
+              <li class="dropdown-item">注文履歴</li>
+              <li class="dropdown-divider"></li>
+              <li class="dropdown-item">登録情報確認</li>
+              <li class="dropdown-divider"></li>
+              <li class="dropdown-item"><%= link_to 'ログアウト', customers_logout_path, method: :delete %></li>
+            <% else %>
+              <li class="dropdown-item">店舗一覧</li>
+              <li class="dropdown-divider"></li>
+              <li class="dropdown-item"><%= link_to '新規登録', new_customer_path %></li>
+              <li class="dropdown-divider"></li>
+              <li class="dropdown-item"><%= link_to 'ログイン', customers_login_path %></li>
+            <% end %>
           </ul>
         </li>
       </ul>
