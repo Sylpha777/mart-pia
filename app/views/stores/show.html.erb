@@ -1,2 +1,40 @@
-<h1>Stores#show</h1>
-<p>Find me in app/views/stores/show.html.erb</p>
+<div class="text-center">
+  <h1 class="my-5"><%= @store.name %></h1>
+  <img class="rounded" src="<%= "/store_images/#{@store.image}" %>" alt="店舗画像" width="300" height="300">
+</div>
+<div class="row mt-5">
+  <% @categories.each do |category| %>
+    <div class="col-sm-4 text-center">
+      <img class="rounded" src="<%= "/category_images/#{category.image}" %>" alt="カテゴリ画像" width="200" height="200">
+      <p><%= link_to category.name, "/categories/#{category.id}" %></p>
+    </div>
+  <% end %>
+</div>
+<div class="text-center">
+  <table class="table mt-5">
+    <tr>
+      <th>店舗名</th>
+      <td><%= @store.name %></td>
+    </tr>
+    <tr>
+      <th>営業時間</th>
+      <td><%= @store.business_hours %></td>
+    </tr>
+    <tr>
+      <th>住所</th>
+      <td><%= @store.address %></td>
+    </tr>
+    <tr>
+      <th>電話番号</th>
+      <td><%= @store.phone %></td>
+    </tr>
+    <tr>
+      <th>配送可能エリア</th>
+      <td><%= @store.area %></td>
+    </tr>
+    <tr>
+      <th>店舗からのメッセージ</th>
+      <td><%= @store.message %></td>
+    </tr>
+  </table>
+</div>

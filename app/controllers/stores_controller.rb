@@ -5,6 +5,8 @@ class StoresController < ApplicationController
   end
 
   def show
+    @store = Store.find(params[:id])
+    @categories = Category.where(store_id: params[:id])
   end
 
   def new

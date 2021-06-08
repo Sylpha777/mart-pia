@@ -1,0 +1,23 @@
+<div class="text-center">
+  <h1 class="my-5">カテゴリ新規登録</h1>
+</div>
+<div class="row">
+  <div class="col-sm-6 offset-sm-3">
+    <%= form_with(model: @category, local: true) do |f| %>
+      <%= render 'layouts/error_messages', model: f.object %>
+      <div class="form-group">
+        <%= f.label :name, 'カテゴリ名' %>
+        <%= f.text_field :name, class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= f.label :image, '画像' %>
+        <%= f.text_field :image, class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= f.label :store_id, '店舗ID' %>
+        <%= f.text_field :store_id, class: 'form-control' %>
+      </div>
+      <%= f.submit '新規登録', class: 'btn btn-primary btn-block mt-5' %>
+    <% end %>
+  </div>
+</div>
