@@ -8,4 +8,6 @@ Rails.application.routes.draw do
   
   resources :customers, only: [:show, :new, :create, :edit, :update]
   
+  resources :stores, only: [:index, :show, :new, :create]
+  
 end

@@ -1,0 +1,26 @@
+<div class="text-center">
+  <h1 class="my-5">店舗一覧</h1>
+</div>
+<div class="row">
+  <div class="col-sm-8 offset-sm-2">
+    <ul class="list-unstyled">
+      <% @stores.each do |store| %>
+        <li class="media mb-3 border">
+          <img class="mr-3 rounded" src="<%= "/store_images/#{store.image}" %>" alt="店舗画像" width="100" height="100">
+          <div class="media-body">
+            <div>
+              <%= link_to store.name, store_path(store) %>
+            </div>
+            <div>
+              <p>営業時間：<%= store.business_hours %></p>
+            </div>
+            <div>
+              <p>配送可能エリア：<%= store.area %></p>
+            </div>
+          </div>
+        </li>
+      <% end %>
+      <%= paginate @stores %>
+    </ul>
+  </div>
+</div>
