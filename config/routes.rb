@@ -12,4 +12,6 @@ Rails.application.routes.draw do
   
   resources :categories, only: [:show, :new, :create]
   
+  resources :items, only: [:show, :new, :create]
+  
 end
