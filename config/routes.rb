@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   
   root to: 'toppages#index'
   
+  get 'guides', to: 'toppages#guides'
+  
   get 'customers/login', to: 'sessions#new'
   post 'customers/login', to: 'sessions#create'
   delete 'customers/logout', to: 'sessions#destroy'
