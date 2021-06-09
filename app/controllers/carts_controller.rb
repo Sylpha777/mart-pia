@@ -62,6 +62,17 @@ class CartsController < ApplicationController
     redirect_to "/carts/#{@cart.id}/payment"
   end
   
+  def payment
+    @cart = Cart.find(params[:id])
+  end
+  
+  def add_payment
+    @cart = Cart.find(params[:id])
+    @cart.payment = params[:payment]
+    @cart.save
+    redirect_to "/carts/#{@cart.id}/confirm"
+  end
+  
   private
   
   def setup_cart_item

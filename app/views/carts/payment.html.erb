@@ -1,0 +1,26 @@
+<div class="text-center">
+  <h1 class="my-5">お支払い方法選択</h1>
+</div>
+<div class="row">
+  <div class="col-sm-8 offset-sm-2">
+    <%= form_with(url: "/carts/#{@cart.id}/payment", local: true) do |f| %>
+      <div class="media mb-3 border">
+        <div class="mx-4 my-5">
+          <%= f.radio_button :payment, :credit_card, checked: true %>
+        </div>
+        <div class="media-body">
+          <p>クレジットカード</p>
+        </div>
+      </div>
+      <div class="media mb-3 border">
+        <div class="mx-4 my-5">
+          <%= f.radio_button :payment, :cash %>
+        </div>
+        <div class="media-body">
+          <p>代金引換</p>
+        </div>
+      </div>
+      <%= f.submit '選択完了', class: 'btn btn-primary btn-block mt-5' %>
+    <% end %>
+  </div>
+</div>
