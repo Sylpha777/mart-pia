@@ -1,0 +1,16 @@
+<div class="text-center">
+  <h1 class="my-5">注文内容確認</h1>
+  <h1 class="my-5"><%= @store.name %></h1>
+</div>
+<div class="row mt-5">
+  <% @cart_items.each do |cart_item| %>
+    <div class="col-sm-3 text-center">
+      <img class="rounded" src="<%= "/item_images/#{cart_item.item.image}" %>" alt="商品画像" width="150" height="150">
+      <p class="my-1"><%= link_to cart_item.item.name, "/items/#{cart_item.item.id}" %></p>
+      <p class="my-1">¥<%= cart_item.item.price %>(税込)</p>
+      <p class="my-1">個数：<%= cart_item.count %></p>
+    </div>
+  <% end %>
+</div>
+<p class="mt-3">受け取り方法：<%= @receive %></p>
+<p class="mt-3">お支払い方法：<%= @payment %></p>

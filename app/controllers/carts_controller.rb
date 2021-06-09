@@ -73,6 +73,22 @@ class CartsController < ApplicationController
     redirect_to "/carts/#{@cart.id}/confirm"
   end
   
+  def confirm
+    @cart = Cart.find(params[:id])
+    @store = Store.find(@cart.store_id)
+    @cart_items = @cart.cart_items.includes([:item])
+    if @cart.receive == "delivery"
+      @receive = "登録されている住所に配送"
+    else
+      @receive = "店頭で受け取り"
+    end
+    if @cart.payment == "credit_card"
+      @payment = "クレジットカード"
+    else
+      @payment = "代金引換"
+    end
+  end
+  
   private
   
   def setup_cart_item
