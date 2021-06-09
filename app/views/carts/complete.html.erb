@@ -1,0 +1,9 @@
+<div class="text-center">
+  <h1 class="my-5">注文完了</h1>
+  <p>ご注文が完了しました！</p>
+  <p><%= @customer.email %></p>
+  <p>上記のメールアドレスに注文完了メールを送信しました。</p>
+  <p>注文番号：<%= @cart.number %></p>
+  <p>注文確認の際は上記の番号をご提示ください。</p>
+  <button type="button" onclick="location.href='/'" class="btn btn-primary mt-5 w-50">トップページへ戻る</button>
+</div>
