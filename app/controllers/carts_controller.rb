@@ -50,6 +50,16 @@ class CartsController < ApplicationController
   end
   
   def receive
+    @cart = Cart.find(params[:id])
+    @customer = Customer.find(@cart.customer_id)
+    @store = Store.find(@cart.store_id)
+  end
+  
+  def add_receive
+    @cart = Cart.find(params[:id])
+    @cart.receive = params[:receive]
+    @cart.save
+    redirect_to "/carts/#{@cart.id}/payment"
   end
   
   private

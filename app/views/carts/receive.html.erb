@@ -1,3 +1,30 @@
 <div class="text-center">
   <h1 class="my-5">受け取り方法選択</h1>
 </div>
+<div class="row">
+  <div class="col-sm-8 offset-sm-2">
+    <%= form_with(url: "/carts/#{@cart.id}/receive", local: true) do |f| %>
+      <div class="media mb-3 border">
+        <div class="mx-4 my-5">
+          <%= f.radio_button :receive, :delivery, checked: true %>
+        </div>
+        <div class="media-body">
+          <p>登録されている住所に配送</p>
+          <p><%= @customer.name %></p>
+          <p><%= @customer.address %></p>
+        </div>
+      </div>
+      <div class="media mb-3 border">
+        <div class="mx-4 my-5">
+          <%= f.radio_button :receive, :at_store %>
+        </div>
+        <div class="media-body">
+          <p>店頭で受け取り</p>
+          <p><%= @store.name %></p>
+          <p><%= @store.business_hours %></p>
+        </div>
+      </div>
+      <%= f.submit '選択完了', class: 'btn btn-primary btn-block mt-5' %>
+    <% end %>
+  </div>
+</div>
