@@ -16,7 +16,7 @@
               <li class="dropdown-divider"></li>
               <li class="dropdown-item">注文履歴</li>
               <li class="dropdown-divider"></li>
-              <li class="dropdown-item">登録情報確認</li>
+              <li class="dropdown-item"><%= link_to '登録情報確認', customer_path(current_customer) %></li>
               <li class="dropdown-divider"></li>
               <li class="dropdown-item"><%= link_to 'ログアウト', customers_logout_path, method: :delete %></li>
             <% else %>
