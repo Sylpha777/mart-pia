@@ -17,4 +17,13 @@ module SessionsHelper
     end
   end
   
+  def current_cart
+    if @current_cart
+      return @current_cart
+    else
+      @current_cart = Cart.find_by(id: session[:cart_id])
+      return @current_cart
+    end
+  end
+  
 end

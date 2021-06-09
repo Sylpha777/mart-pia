@@ -12,7 +12,7 @@
             <% if customer_logged_in? %>
               <li class="dropdown-item"><%= link_to '店舗一覧', stores_path %></li>
               <li class="dropdown-divider"></li>
-              <li class="dropdown-item">カート内容</li>
+              <li class="dropdown-item"><%= link_to 'カート内容', cart_path(current_cart) %></li>
               <li class="dropdown-divider"></li>
               <li class="dropdown-item">注文履歴</li>
               <li class="dropdown-divider"></li>

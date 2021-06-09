@@ -27,6 +27,7 @@ class SessionsController < ApplicationController
     @customer = Customer.find_by(email: email)
     if @customer && @customer.authenticate(password)
       session[:customer_id] = @customer.id
+      session[:cart_id] = Cart.find_by(customer_id: @customer.id).id
       return true
     else
       return false

@@ -10,7 +10,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_09_023603) do
+ActiveRecord::Schema.define(version: 2021_06_09_053926) do
+
+  create_table "cart_items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "cart_id"
+    t.bigint "item_id"
+    t.integer "count", default: 0
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["cart_id"], name: "index_cart_items_on_cart_id"
+    t.index ["item_id"], name: "index_cart_items_on_item_id"
+  end
+
+  create_table "carts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "customer_id"
+    t.bigint "store_id"
+    t.integer "receive"
+    t.integer "payment"
+    t.integer "status"
+    t.integer "number"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["customer_id"], name: "index_carts_on_customer_id"
+    t.index ["store_id"], name: "index_carts_on_store_id"
+  end
 
   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "store_id"
@@ -66,6 +89,10 @@ ActiveRecord::Schema.define(version: 2021_06_09_023603) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "cart_items", "carts"
+  add_foreign_key "cart_items", "items"
+  add_foreign_key "carts", "customers"
+  add_foreign_key "carts", "stores"
   add_foreign_key "categories", "stores"
   add_foreign_key "items", "categories"
   add_foreign_key "items", "stores"

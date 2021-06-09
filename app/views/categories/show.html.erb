@@ -5,10 +5,15 @@
 <div class="row mt-5">
   <% @items.each do |item| %>
     <div class="col-sm-3 text-center">
-      <img class="rounded" src="<%= "/item_images/#{item.image}" %>" alt="商品画像" width="150" height="150">
-      <p class="my-1"><%= link_to item.name, "/items/#{item.id}" %></p>
-      <p class="my-1">¥<%= item.price %>(税込)</p>
-      <span class="my-1">個数</span>
+      <%= form_with(url: "/add_item", local: true) do |f| %>
+        <img class="rounded" src="<%= "/item_images/#{item.image}" %>" alt="商品画像" width="150" height="150">
+        <p class="my-1"><%= link_to item.name, "/items/#{item.id}" %></p>
+        <p class="my-1">¥<%= item.price %>(税込)</p>
+        <span class="my-1">個数：</span>
+        <%= f.hidden_field :item_id, value: item.id %>
+        <%= f.select :count, [["1", 1], ["2", 2], ["3", 3], ["4", 4], ["5", 5]], selected: "1" %>
+        <%= f.submit 'カートに追加する', class: 'btn btn-primary mt-1' %>
+      <% end %>
     </div>
   <% end %>
 </div>

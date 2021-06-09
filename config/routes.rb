@@ -18,4 +18,19 @@ Rails.application.routes.draw do
   
   resources :contacts, only: [:new, :create]
   
+  post 'add_item', to: 'carts#add_item'
+  post 'update_item', to: 'carts#update_item'
+  delete 'delete_item', to: 'carts#delete_item'
+  
+  resources :carts, only: [:show]
+  
+  delete 'destroy_cart', to: 'carts#destroy'
+  
+  get 'carts/:id/receive', to: 'carts#receive'
+  post 'carts/:id/receive', to: 'carts#add_receive'
+  get 'carts/:id/payment', to: 'carts#payment'
+  post 'carts/:id/payment', to: 'carts#add_payment'
+  get 'carts/:id/confirm', to: 'carts#confirm'
+  get 'carts/:id/complete', to: 'carts#complete'
+  
 end

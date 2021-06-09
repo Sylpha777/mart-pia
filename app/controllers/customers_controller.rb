@@ -13,6 +13,8 @@ class CustomersController < ApplicationController
   def create
     @customer = Customer.new(customer_params)
     if @customer.save
+      @cart = Cart.new(customer_id: @customer.id, status: 0)
+      @cart.save
       flash[:success] = '新規登録しました。'
       redirect_to root_url
     else

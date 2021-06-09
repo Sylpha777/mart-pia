@@ -4,5 +4,14 @@
   <h1 class="my-5"><%= @item.name %></h1>
   <p class="mt-4 h4">¥<%= @item.price %>(税込)</p>
   <p class="mt-4"><%= @item.message %></p>
-  <p class="mt-4">個数</p>
+</div>
+<div class="row">
+  <div class="col-sm-6 offset-sm-3">
+    <%= form_with(url: "/add_item", local: true) do |f| %>
+      <span class="my-1">個数：</span>
+      <%= f.hidden_field :item_id, value: @item.id %>
+      <%= f.select :count, [["1", 1], ["2", 2], ["3", 3], ["4", 4], ["5", 5]], selected: "1" %>
+      <%= f.submit 'カートに追加する', class: 'btn btn-primary btn-block mt-5' %>
+    <% end %>
+  </div>
 </div>
