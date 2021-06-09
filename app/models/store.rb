@@ -8,4 +8,7 @@ class Store < ApplicationRecord
   validates :area, presence: true, length: { maximum: 200 }
   validates :message, presence: true, length: { maximum: 200 }
   
+  has_many :categories
+  has_many :items
+  
 end

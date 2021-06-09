@@ -1,2 +1,8 @@
-<h1>Items#show</h1>
-<p>Find me in app/views/items/show.html.erb</p>
+<div class="text-center">
+  <h1 class="my-5"><%= @store.name %></h1>
+  <img class="rounded" src="<%= "/item_images/#{@item.image}" %>" alt="商品画像" width="300" height="300">
+  <h1 class="my-5"><%= @item.name %></h1>
+  <p class="mt-4 h4">¥<%= @item.price %>(税込)</p>
+  <p class="mt-4"><%= @item.message %></p>
+  <p class="mt-4">個数</p>
+</div>
