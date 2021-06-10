@@ -36,6 +36,10 @@ class CustomersController < ApplicationController
     end
   end
   
+  def ordered
+    @carts = Cart.where(customer_id: current_customer.id, status: 1 || 2).order(id: :desc).page(params[:page]).per(10)
+  end
+  
   private
 
   def customer_params

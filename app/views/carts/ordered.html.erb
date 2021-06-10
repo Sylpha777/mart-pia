@@ -1,8 +1,8 @@
 <div class="text-center">
-  <h1 class="my-5">注文内容確認</h1>
-  <h1 class="my-5">注文先店舗名：<%= @store.name %></h1>
+  <h1 class="my-5">注文詳細</h1>
+  <h1 class="my-5">注文番号：<%= @cart.number %></h1>
+  <h1 class="my-5">注文先店舗名：<%= link_to @cart.store.name, "/stores/#{@cart.store.id}" %></h1>
   <h2 class="my-5"><%= "合計：#{@total}円" %></h2>
-  <%= link_to "注文確定", "/carts/#{current_cart.id}/complete", class: 'btn btn-primary my-2 w-25' %>
 </div>
 <div class="row mt-5">
   <% @cart_items.each do |cart_item| %>

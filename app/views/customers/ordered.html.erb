@@ -1,0 +1,28 @@
+<div class="text-center">
+  <h1 class="my-5">注文履歴</h1>
+</div>
+<div class="row">
+  <div class="col-sm-8 offset-sm-2">
+    <ul class="list-unstyled">
+      <% @carts.each do |cart| %>
+        <li class="media mb-3 border">
+          <div class="media-body">
+            <div>
+              <p>注文番号：<%= link_to cart.number, "/carts/#{cart.id}/ordered" %></p>
+            </div>
+            <div>
+              <p>注文先店舗名：<%= cart.store.name %></p>
+            </div>
+            <div>
+              <p>受け取り方法：<%= cart.receive %></p>
+            </div>
+            <div>
+              <p>注文状況：<%= cart.status %></p>
+            </div>
+          </div>
+        </li>
+      <% end %>
+      <%= paginate @carts %>
+    </ul>
+  </div>
+</div>

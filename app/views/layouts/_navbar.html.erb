@@ -14,7 +14,7 @@
               <li class="dropdown-divider"></li>
               <li class="dropdown-item"><%= link_to 'カート内容', cart_path(current_cart) %></li>
               <li class="dropdown-divider"></li>
-              <li class="dropdown-item">注文履歴</li>
+              <li class="dropdown-item"><%= link_to '注文履歴', "/customers/#{current_customer.id}/ordered" %></li>
               <li class="dropdown-divider"></li>
               <li class="dropdown-item"><%= link_to '登録情報確認', customer_path(current_customer) %></li>
               <li class="dropdown-divider"></li>

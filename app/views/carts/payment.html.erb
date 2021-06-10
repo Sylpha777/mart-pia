@@ -6,7 +6,7 @@
     <%= form_with(url: "/carts/#{@cart.id}/payment", local: true) do |f| %>
       <div class="media mb-3 border">
         <div class="mx-4 my-5">
-          <%= f.radio_button :payment, :credit_card, checked: true %>
+          <%= f.radio_button :payment, "クレジットカード", checked: true %>
         </div>
         <div class="media-body">
           <p>クレジットカード</p>
@@ -14,7 +14,7 @@
       </div>
       <div class="media mb-3 border">
         <div class="mx-4 my-5">
-          <%= f.radio_button :payment, :cash %>
+          <%= f.radio_button :payment, "代金引換" %>
         </div>
         <div class="media-body">
           <p>代金引換</p>

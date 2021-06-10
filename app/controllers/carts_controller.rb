@@ -78,26 +78,24 @@ class CartsController < ApplicationController
     @store = Store.find(@cart.store_id)
     @cart_items = @cart.cart_items.includes([:item])
     @total = @cart_items.inject(0) { |sum, item| sum + item.sum_of_price }
-    if @cart.receive == "delivery"
-      @receive = "登録されている住所に配送"
-    else
-      @receive = "店頭で受け取り"
-    end
-    if @cart.payment == "credit_card"
-      @payment = "クレジットカード"
-    else
-      @payment = "代金引換"
-    end
   end
   
   def complete
     @cart = Cart.find(params[:id])
     @customer = Customer.find(@cart.customer_id)
     @cart.status = 1
+    @cart.number = rand(10000000..99999999)
     @cart.save
-    @cart = Cart.new(customer_id: current_customer.id, status: 0)
-    @cart.save
-    session[:cart_id] = @cart.id
+    @new_cart = Cart.new(customer_id: current_customer.id, status: 0)
+    @new_cart.save
+    session[:cart_id] = @new_cart.id
+  end
+  
+  def ordered
+    @cart = Cart.find(params[:id])
+    @store = Store.find(@cart.store_id)
+    @cart_items = @cart.cart_items.includes([:item])
+    @total = @cart_items.inject(0) { |sum, item| sum + item.sum_of_price }
   end
   
   private

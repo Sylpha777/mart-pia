@@ -33,4 +33,7 @@ Rails.application.routes.draw do
   get 'carts/:id/confirm', to: 'carts#confirm'
   get 'carts/:id/complete', to: 'carts#complete'
   
+  get 'customers/:id/ordered', to: 'customers#ordered'
+  get 'carts/:id/ordered', to: 'carts#ordered'
+  
 end

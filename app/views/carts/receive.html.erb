@@ -6,7 +6,7 @@
     <%= form_with(url: "/carts/#{@cart.id}/receive", local: true) do |f| %>
       <div class="media mb-3 border">
         <div class="mx-4 my-5">
-          <%= f.radio_button :receive, :delivery, checked: true %>
+          <%= f.radio_button :receive, "登録されている住所に配送", checked: true %>
         </div>
         <div class="media-body">
           <p>登録されている住所に配送</p>
@@ -16,7 +16,7 @@
       </div>
       <div class="media mb-3 border">
         <div class="mx-4 my-5">
-          <%= f.radio_button :receive, :at_store %>
+          <%= f.radio_button :receive, "店舗で受け取る" %>
         </div>
         <div class="media-body">
           <p>店頭で受け取り</p>
