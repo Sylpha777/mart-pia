@@ -10,8 +10,16 @@ class CartsController < ApplicationController
     if @cart_item.count > 5
       @cart_item.count = 5
     end
-    @cart_item.save
-    redirect_to current_cart
+    if @cart_item.item.store_id == current_cart.store_id
+      @cart_item.save
+      redirect_to current_cart
+    elsif current_cart.store_id == nil
+      @cart_item.save
+      redirect_to current_cart
+    else
+      flash[:danger] = 'カート内の商品と異なる店舗の商品は追加できません。'
+      redirect_to current_cart
+    end
   end
   
   def update_item
