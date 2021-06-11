@@ -1,5 +1,6 @@
 class CartsController < ApplicationController
   
+  before_action :require_customer_logged_in
   before_action :setup_cart_item, only: [:add_item, :update_item, :delete_item]
   
   def add_item
