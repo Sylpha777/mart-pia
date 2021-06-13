@@ -97,6 +97,8 @@ class CartsController < ApplicationController
     @new_cart = Cart.new(customer_id: current_customer.id, status: 0)
     @new_cart.save
     session[:cart_id] = @new_cart.id
+    @customer = Customer.find(@cart.customer_id)
+    NotificationMailer.send_complete_to_customer(@customer, @cart).deliver
     redirect_to "/carts/#{@cart.id}/complete"
   end
   

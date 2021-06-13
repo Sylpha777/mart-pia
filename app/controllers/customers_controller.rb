@@ -15,6 +15,7 @@ class CustomersController < ApplicationController
     if @customer.save
       @cart = Cart.new(customer_id: @customer.id, status: 0)
       @cart.save
+      NotificationMailer.send_signup_to_customer(@customer).deliver
       flash[:success] = '新規登録しました。'
       redirect_to root_url
     else
@@ -28,6 +29,7 @@ class CustomersController < ApplicationController
 
   def update
     if @customer.update(customer_params)
+      NotificationMailer.send_update_to_customer(@customer).deliver
       flash[:success] = '変更しました。'
       redirect_to @customer
     else
