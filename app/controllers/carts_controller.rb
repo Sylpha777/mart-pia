@@ -89,15 +89,20 @@ class CartsController < ApplicationController
     @total = @cart_items.inject(0) { |sum, item| sum + item.sum_of_price }
   end
   
-  def complete
+  def cart_confirmed
     @cart = Cart.find(params[:id])
-    @customer = Customer.find(@cart.customer_id)
     @cart.status = 1
     @cart.number = rand(10000000..99999999)
     @cart.save
     @new_cart = Cart.new(customer_id: current_customer.id, status: 0)
     @new_cart.save
     session[:cart_id] = @new_cart.id
+    redirect_to "/carts/#{@cart.id}/complete"
+  end
+  
+  def complete
+    @cart = Cart.find(params[:id])
+    @customer = Customer.find(@cart.customer_id)
   end
   
   def ordered

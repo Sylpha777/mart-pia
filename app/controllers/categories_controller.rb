@@ -4,6 +4,11 @@ class CategoriesController < ApplicationController
     @category = Category.find(params[:id])
     @store = Store.find(@category.store_id)
     @items = Item.where(category_id: params[:id])
+    if @store.id == current_cart.store_id
+    elsif current_cart.store_id == nil
+    else
+      flash[:danger] = 'カート内に異なる店舗の商品が入っています。'
+    end
   end
 
   def new

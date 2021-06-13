@@ -24,6 +24,8 @@
     </div>
   <% end %>
 </div>
-<div class="text-center">
-  <%= link_to "カートを削除", destroy_cart_path, method: :delete, class: 'btn btn-primary mt-5' %>
-</div>
+<% if @store %>
+  <div class="text-center">
+    <%= link_to "カートを削除", destroy_cart_path, method: :delete, class: 'btn btn-primary mt-5' %>
+  </div>
+<% end %>

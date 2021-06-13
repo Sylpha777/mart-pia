@@ -31,6 +31,7 @@ Rails.application.routes.draw do
   get 'carts/:id/payment', to: 'carts#payment'
   post 'carts/:id/payment', to: 'carts#add_payment'
   get 'carts/:id/confirm', to: 'carts#confirm'
+  post 'carts/:id/confirm', to: 'carts#cart_confirmed'
   get 'carts/:id/complete', to: 'carts#complete'
   
   get 'customers/:id/ordered', to: 'customers#ordered'
