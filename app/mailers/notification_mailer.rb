@@ -21,4 +21,9 @@ class NotificationMailer < ApplicationMailer
     mail to: contact.email, subject: 'Mart-Piaでのお問い合わせが完了しました。'
   end
   
+  def send_contact_to_manager(contact)
+    @contact = contact
+    mail to: "martpia.app@gmail.com", subject: 'Mart-Piaにてお問い合わせが届きました。'
+  end
+  
 end

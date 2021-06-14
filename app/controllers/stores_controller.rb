@@ -7,9 +7,7 @@ class StoresController < ApplicationController
   def show
     @store = Store.find(params[:id])
     @categories = Category.where(store_id: params[:id])
-    if @store.id == current_cart.store_id
-    elsif current_cart.store_id == nil
-    else
+    if customer_logged_in? && @store.id != current_cart.store_id && current_cart.store_id != nil
       flash[:danger] = 'カート内に異なる店舗の商品が入っています。'
     end
   end

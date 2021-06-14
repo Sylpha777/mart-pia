@@ -8,6 +8,7 @@ class ContactsController < ApplicationController
     @contact = Contact.new(contact_params)
     if @contact.save
       NotificationMailer.send_contact_to_sender(@contact).deliver
+      NotificationMailer.send_contact_to_manager(@contact).deliver
       flash[:success] = '送信しました。'
       redirect_to root_url
     else
