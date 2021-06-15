@@ -2,7 +2,7 @@ class CartsController < ApplicationController
   
   before_action :require_customer_logged_in
   before_action :setup_cart_item, only: [:add_item, :update_item, :delete_item]
-  before_action :correct_customer, only: [:show, :receive, :payment, :confirm, :complete]
+  before_action :correct_customer, only: [:show, :receive, :payment, :confirm, :complete, :ordered]
   
   def add_item
     if @cart_item.blank?
