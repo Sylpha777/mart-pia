@@ -2,6 +2,7 @@ class CartsController < ApplicationController
   
   before_action :require_customer_logged_in
   before_action :setup_cart_item, only: [:add_item, :update_item, :delete_item]
+  before_action :correct_customer, only: [:show, :receive, :payment, :confirm, :complete]
   
   def add_item
     if @cart_item.blank?
@@ -118,6 +119,13 @@ class CartsController < ApplicationController
   
   def setup_cart_item
     @cart_item = current_cart.cart_items.find_by(item_id: params[:item_id])
+  end
+  
+  def correct_customer
+    @customer = Cart.find(params[:id]).customer
+    if @customer.id != session[:customer_id]
+      redirect_to root_url
+    end
   end
   
 end

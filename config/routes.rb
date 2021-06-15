@@ -8,6 +8,9 @@ Rails.application.routes.draw do
   post 'customers/login', to: 'sessions#create'
   delete 'customers/logout', to: 'sessions#destroy'
   
+  get 'customers/ordered', to: 'customers#ordered'
+  get 'carts/:id/ordered', to: 'carts#ordered'
+  
   resources :customers, only: [:show, :new, :create, :edit, :update]
   
   resources :stores, only: [:index, :show, :new, :create]
@@ -33,8 +36,5 @@ Rails.application.routes.draw do
   get 'carts/:id/confirm', to: 'carts#confirm'
   post 'carts/:id/confirm', to: 'carts#cart_confirmed'
   get 'carts/:id/complete', to: 'carts#complete'
-  
-  get 'customers/:id/ordered', to: 'customers#ordered'
-  get 'carts/:id/ordered', to: 'carts#ordered'
   
 end
