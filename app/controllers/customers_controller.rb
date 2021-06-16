@@ -15,6 +15,8 @@ class CustomersController < ApplicationController
     if @customer.save
       @cart = Cart.new(customer_id: @customer.id, status: 0)
       @cart.save
+      session[:customer_id] = @customer.id
+      session[:cart_id] = @cart.id
       NotificationMailer.send_signup_to_customer(@customer).deliver
       flash[:success] = '新規登録しました。'
       redirect_to root_url

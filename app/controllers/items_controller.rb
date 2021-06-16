@@ -1,5 +1,7 @@
 class ItemsController < ApplicationController
   
+  before_action :store_location
+  
   def show
     @item = Item.find(params[:id])
     @store = Store.find(@item.store_id)

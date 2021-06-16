@@ -14,10 +14,12 @@ class CartsController < ApplicationController
     end
     if @cart_item.item.store_id == current_cart.store_id
       @cart_item.save
-      redirect_to current_cart
+      flash[:success] = '商品をカートに追加しました。'
+      redirect_back(fallback_location: current_cart)
     elsif current_cart.store_id == nil
       @cart_item.save
-      redirect_to current_cart
+      flash[:success] = '商品をカートに追加しました。'
+      redirect_back(fallback_location: current_cart)
     else
       flash[:danger] = 'カート内の商品と異なる店舗の商品は追加できません。'
       redirect_to current_cart

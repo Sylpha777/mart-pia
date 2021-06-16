@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
     password = params[:session][:password]
     if customer_login(email, password)
       flash[:success] = 'ログインに成功しました。'
-      redirect_to root_url
+      redirect_back
     else
       flash.now[:danger] = 'ログインに失敗しました。'
       render :new
@@ -17,6 +17,7 @@ class SessionsController < ApplicationController
 
   def destroy
     session[:customer_id] = nil
+    session[:return_to] = nil
     flash[:success] = 'ログアウトしました。'
     redirect_to root_url
   end
@@ -31,6 +32,14 @@ class SessionsController < ApplicationController
       return true
     else
       return false
+    end
+  end
+  
+  def redirect_back
+    if session[:return_to]
+      redirect_to session[:return_to]
+    else
+      redirect_to root_url
     end
   end
   

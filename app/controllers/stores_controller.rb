@@ -1,5 +1,7 @@
 class StoresController < ApplicationController
   
+  before_action :store_location
+  
   def index
     @stores = Store.order(id: :desc).page(params[:page]).per(10)
   end

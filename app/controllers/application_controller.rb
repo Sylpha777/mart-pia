@@ -1,6 +1,10 @@
 class ApplicationController < ActionController::Base
   
   include SessionsHelper
+
+  def store_location
+    session[:return_to] = request.url
+  end
   
   private
 

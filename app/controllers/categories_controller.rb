@@ -1,5 +1,7 @@
 class CategoriesController < ApplicationController
   
+  before_action :store_location
+  
   def show
     @category = Category.find(params[:id])
     @store = Store.find(@category.store_id)
