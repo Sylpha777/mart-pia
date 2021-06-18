@@ -20,12 +20,12 @@
       <%= f.select :count, [["1", 1], ["2", 2], ["3", 3], ["4", 4], ["5", 5]], selected: cart_item.count %>
       <%= f.submit '個数を変更する', class: 'btn btn-primary mt-1' %>
       <% end %>
-      <%= link_to "カートから削除", delete_item_path(item_id: cart_item.item.id), method: :delete, class: 'btn btn-primary mt-1' %>
+      <%= link_to "カートから削除", delete_item_path(item_id: cart_item.item.id), method: :delete, class: 'btn btn-danger mt-1' %>
     </div>
   <% end %>
 </div>
 <% if @store %>
   <div class="text-center">
-    <%= link_to "カートを削除", destroy_cart_path, method: :delete, class: 'btn btn-primary mt-5' %>
+    <%= link_to "カートを削除", destroy_cart_path, method: :delete, class: 'btn btn-danger mt-5' %>
   </div>
 <% end %>
